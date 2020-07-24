@@ -5,6 +5,6 @@
 void gotoij(int i, int j);
 void hideCursor();
 void displayMap();
-bool gameover(snake s);
+bool gameover(const snake &s);
 
 #endif

@@ -37,7 +37,7 @@ void displayMap()
 	}
 }
 
-bool gameover(snake s)
+bool gameover(const snake &s)
 {
 	if (s.head.i == 0 || s.head.i == 19 || s.head.j == 0 || s.head.j == 39)
 		return true;
