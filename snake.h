@@ -1,6 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 #include "point.h"
+#include<string>
 
 enum direction{up,down,left,right};
 
@@ -20,6 +21,7 @@ public:
 	void move();
 	void turn(direction dir);
 	void generateFruit();
+	std::string hash();
 };
 
 #endif // !SNAKE_H
