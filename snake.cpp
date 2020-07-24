@@ -13,6 +13,7 @@ snake::snake()
 	body[0].set(10, 19);
 	body[1].set(10, 18);
 	blank.set(10, 17);
+	generateFruit();
 }
 
 void snake::print()
@@ -26,6 +27,8 @@ void snake::print()
 	}
 	gotoij(blank.i, blank.j);
 	cout << " ";
+	gotoij(fruit.i, fruit.j);
+	cout << "$";
 }
 
 void snake::follow()
@@ -56,6 +59,8 @@ void snake::move()
 			head.j++;
 			break;
 	}
+	if (head.i == fruit.i&&head.j == fruit.j)
+		generateFruit();
 }
 
 void snake::turn(direction dir)
@@ -78,5 +83,30 @@ void snake::turn(direction dir)
 			if (currentDirection != direction::left)
 				currentDirection = dir;
 			break;
+	}
+}
+
+void snake::generateFruit()
+{
+	while (true)
+	{
+		int tempi = rand() % 18;
+		int tempj = rand() % 38;
+		bool result = true;
+		if (tempi == head.i&&tempj == head.j)
+			continue;
+		for (int i = 0; i < bodysize; i++)
+		{
+			if (tempi == body[i].i&&tempj == body[i].j)
+			{
+				result = false;
+				break;
+			}
+		}
+		if (result == true)
+		{
+			fruit.set(tempi, tempj);
+			return;
+		}
 	}
 }

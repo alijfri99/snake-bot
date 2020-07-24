@@ -11,12 +11,14 @@ public:
 	point head;
 	point body[798];
 	point blank;
+	point fruit;
 	direction currentDirection;
 	snake();
 	void print();
 	void follow();
 	void move();
 	void turn(direction dir);
+	void generateFruit();
 };
 
 #endif // !SNAKE_H
