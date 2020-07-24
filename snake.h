@@ -8,6 +8,7 @@ class snake
 {
 public:
 	int bodysize;
+	int score;
 	point head;
 	point body[798];
 	point blank;

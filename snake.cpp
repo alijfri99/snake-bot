@@ -8,6 +8,7 @@ using namespace std;
 snake::snake()
 {
 	bodysize = 2;
+	score = 0;
 	currentDirection = direction::right;
 	head.set(10, 20);
 	body[0].set(10, 19);
@@ -29,6 +30,8 @@ void snake::print()
 	cout << " ";
 	gotoij(fruit.i, fruit.j);
 	cout << "$";
+	gotoij(21, 1);
+	cout << "Score = " << score;
 }
 
 void snake::follow()
@@ -61,6 +64,7 @@ void snake::move()
 	}
 	if (head.i == fruit.i&&head.j == fruit.j)
 	{
+		score += 10;
 		bodysize++;
 		body[bodysize - 1].set(blank.i, blank.j);
 		generateFruit();
@@ -94,8 +98,8 @@ void snake::generateFruit()
 {
 	while (true)
 	{
-		int tempi = rand() % 18;
-		int tempj = rand() % 38;
+		int tempi = (rand() % 13) + 5;
+		int tempj = (rand() % 33) + 5;
 		bool result = true;
 		if (tempi == head.i&&tempj == head.j)
 			continue;

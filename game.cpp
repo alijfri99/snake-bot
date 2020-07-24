@@ -25,6 +25,6 @@ int main()
 			s.turn(direction::right);
 		if (gameover(s))
 			break;
-		Sleep(120);
+		Sleep(100);
 	}
 }
