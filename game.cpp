@@ -13,6 +13,11 @@ int main()
 	s.print();
 	while (true)
 	{
+		if (GetKeyState('F'))
+			break;
+	}
+	while (true)
+	{
 		s.move();
 		s.print();
 		if (GetAsyncKeyState('W'))
