@@ -34,6 +34,7 @@ int main()
 		Sleep(100);
 	}*/
 	snake s;
+	cout << s.head.i << ", " << s.head.j << ", " << s.fruit.i << ", " << s.fruit.j << endl;
 	vector<string> v = bfs(s);
 	while (!v.empty())
 	{

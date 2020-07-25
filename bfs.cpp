@@ -3,6 +3,7 @@
 #include "node.h"
 #include<queue>
 #include<unordered_map>
+#include<iostream>
 
 bool isGoal(const snake &s)
 {
@@ -47,27 +48,39 @@ std::vector<node *> successor(node *current)
 	node *nleft = new node(sleft, "left", (current->g) + 1, current);
 	node *nright = new node(sright, "right", (current->g) + 1, current);
 
-	switch (s.currentDirection) //add successor nodes to the result based on the current direction
+	switch (s.currentDirection) //add successor nodes to the result based on the current direction, and only if the snake stays within the map
 	{
 		case 0: //up
-			result.push_back(nup);
-			result.push_back(nleft);
-			result.push_back(nright);
+			if(sup.head.i>0)
+				result.push_back(nup);
+			if(sleft.head.j>0)
+				result.push_back(nleft);
+			if(sright.head.j<39)
+				result.push_back(nright);
 			break;
 		case 1: //down
-			result.push_back(ndown);
-			result.push_back(nleft);
-			result.push_back(nright);
+			if(sdown.head.i<19)
+				result.push_back(ndown);
+			if (sleft.head.j > 0)
+				result.push_back(nleft);
+			if (sright.head.j < 39)
+				result.push_back(nright);
 			break;
 		case 2: //left
-			result.push_back(nup);
-			result.push_back(ndown);
-			result.push_back(nleft);
+			if (sup.head.i > 0)
+				result.push_back(nup);
+			if (sdown.head.i < 19)
+				result.push_back(ndown);
+			if (sleft.head.j > 0)
+				result.push_back(nleft);
 			break;
 		case 3: //right
-			result.push_back(nup);
-			result.push_back(ndown);
-			result.push_back(nright);
+			if (sup.head.i > 0)
+				result.push_back(nup);
+			if (sdown.head.i < 19)
+				result.push_back(ndown);
+			if (sright.head.j < 39)
+				result.push_back(nright);
 			break;
 	}
 	return result;
@@ -75,14 +88,31 @@ std::vector<node *> successor(node *current)
 
 std::vector<std::string> bfs(snake s)
 {
+	std::cout << "In BFS!" << std::endl;
 	node *init = new node(s, "GHOLI", 0, NULL);
 	std::queue<node *> frontier;
+	std::unordered_map<std::string, bool> inFrontier;
 	std::unordered_map<std::string, bool> explored;
 	frontier.push(init);
+	inFrontier[init->nodeSnake.hash()] = true;
 	while (!frontier.empty())
 	{
 		node *current = frontier.back();
 		frontier.pop();
+		inFrontier[current->nodeSnake.hash()] = false;
 		explored[current->nodeSnake.hash()] = true;
+		std::vector<node *> children = successor(current);
+		while (!children.empty())
+		{
+			node *temp = children.back();
+			children.pop_back();
+			if (explored[temp->nodeSnake.hash()] == false && inFrontier[temp->nodeSnake.hash()] == false)
+			{
+				if (isGoal(temp->nodeSnake))
+					return solution(temp);
+				frontier.push(temp);
+				inFrontier[temp->nodeSnake.hash()] = true;
+			}
+		}
 	}
 }
