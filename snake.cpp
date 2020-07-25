@@ -63,13 +63,13 @@ void snake::move()
 			head.j++;
 			break;
 	}
-	if (head.i == fruit.i&&head.j == fruit.j)
+	/*if (head.i == fruit.i&&head.j == fruit.j)
 	{
 		score += 10;
 		bodysize++;
 		body[bodysize - 1].set(blank.i, blank.j);
 		generateFruit();
-	}
+	}*/
 }
 
 void snake::turn(direction dir)

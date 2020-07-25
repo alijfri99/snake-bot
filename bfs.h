@@ -2,11 +2,12 @@
 #define BFS_H
 #include<vector>
 #include "snake.h"
-#include<string>
+#include "node.h"
 
 std::vector<std::string> bfs(snake s);
-bool isGoal(snake s);
-std::vector<std::string> solution(node n);
+bool isGoal(const snake &s);
+std::vector<std::string> solution(node *n);
+std::vector<node *> successor(node *current);
 
 #endif // !BFS_H
 
