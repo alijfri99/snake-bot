@@ -94,14 +94,14 @@ std::vector<std::string> aStar(snake s)
 	int index = 0;
 	node init(s, "", 0, NULL);
 	nodes[index] = init;
-	std::queue<int> frontier;
+	std::priority_queue<int> frontier;
 	std::unordered_map<std::string, bool> inFrontier;
 	std::unordered_map<std::string, bool> inExplored;
 	frontier.push(index);
 	inFrontier[init.nodeSnake.hash()] = true;
 	while (!frontier.empty())
 	{
-		int currentIndex = frontier.front();
+		int currentIndex = frontier.top();
 		node current = nodes[currentIndex];
 		frontier.pop();
 		inFrontier[current.nodeSnake.hash()] = false;
