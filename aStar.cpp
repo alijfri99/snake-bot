@@ -22,16 +22,6 @@ std::vector<std::string> solution(const std::vector<node> &nodes, node n)
 	return result;
 }
 
-void deleteNodes(std::queue<node *> &q)
-{
-	while (!q.empty())
-	{
-		node *temp = q.front();
-		q.pop();
-		delete temp;
-	}
-}
-
 std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 {
 	std::vector<node> result;

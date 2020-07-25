@@ -8,6 +8,8 @@ public:
 	snake nodeSnake;
 	std::string direction;
 	int g;
+	int h;
+	int f;
 	int parentIndex;
 	node();
 	node(snake nodeSnake, std::string direction, int g, int parentIndex);
