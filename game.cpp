@@ -2,19 +2,19 @@
 #include<Windows.h>
 #include "tools.h"
 #include "snake.h"
-#include "bfs.h"
+#include "aStar.h"
 #include "node.h"
 
 using namespace std;
 
 int main()
 {
-	/*hideCursor();
+	hideCursor();
 	displayMap();
 	snake s;
 	//s.print();
 	vector<string> v;
-	v = bfs(s);
+	v = aStar(s);
 	while (true)
 	{
 		if (GetKeyState('F'))
@@ -25,7 +25,7 @@ int main()
 		if (v.empty())
 		{
 			s.increaseSize();
-			v = bfs(s);
+			v = aStar(s);
 		}
 		else
 		{
@@ -45,8 +45,6 @@ int main()
 		v.pop_back();
 		cout << s << endl;
 	}*/
-	cout << sizeof(node) << endl;
-	cin.get();
 	/*vector<int> a(5);
 	a[0] = 55;
 	cout << a[0] << endl;

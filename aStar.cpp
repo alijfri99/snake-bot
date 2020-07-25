@@ -1,4 +1,4 @@
-#include "bfs.h"
+#include "aStar.h"
 #include "snake.h"
 #include "node.h"
 #include<queue>
@@ -98,9 +98,9 @@ std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 	return result;
 }
 
-std::vector<std::string> bfs(snake s)
+std::vector<std::string> aStar(snake s)
 {
-	std::vector<node> nodes(300000);
+	std::vector<node> nodes(200000);
 	int index = 0;
 	node init(s, "", 0, NULL);
 	nodes[index] = init;
