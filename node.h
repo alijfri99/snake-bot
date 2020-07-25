@@ -8,8 +8,9 @@ public:
 	snake nodeSnake;
 	std::string direction;
 	int g;
-	node *parent;
-	node(snake nodeSnake, std::string direction, int g, node *parent);
+	int parentIndex;
+	node();
+	node(snake nodeSnake, std::string direction, int g, int parentIndex);
 };
 
 #endif

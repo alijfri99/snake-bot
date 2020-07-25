@@ -2,10 +2,15 @@
 #include "snake.h"
 #include<string>
 
-node::node(snake nodeSnake, std::string direction, int g, node *parent)
+node::node()
+{
+
+}
+
+node::node(snake nodeSnake, std::string direction, int g, int parentIndex)
 {
 	this->nodeSnake = nodeSnake;
 	this->direction = direction;
 	this->g = g;
-	this->parent = parent;
+	this->parentIndex = parentIndex;
 }

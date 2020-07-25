@@ -3,6 +3,7 @@
 #include "tools.h"
 #include "snake.h"
 #include "bfs.h"
+#include "node.h"
 
 using namespace std;
 
@@ -38,4 +39,11 @@ int main()
 			break;
 		Sleep(100);
 	}
+	/*while (!v.empty())
+	{
+		string s = v.back();
+		v.pop_back();
+		cout << s << endl;
+	}
+	cin.get();*/
 }
