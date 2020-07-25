@@ -21,6 +21,16 @@ std::vector<std::string> solution(node *n)
 	return result;
 }
 
+void deleteFrontier(std::queue<node *> &frontier)
+{
+	while (!frontier.empty())
+	{
+		node *temp = frontier.front();
+		frontier.pop();
+		delete temp;
+	}
+}
+
 std::vector<node *> successor(node *current)
 {
 	std::vector<node*> result;
@@ -57,6 +67,7 @@ std::vector<node *> successor(node *current)
 				result.push_back(nleft);
 			if(sright.head.j<39)
 				result.push_back(nright);
+			delete ndown;
 			break;
 		case 1: //down
 			if(sdown.head.i<19)
@@ -65,6 +76,7 @@ std::vector<node *> successor(node *current)
 				result.push_back(nleft);
 			if (sright.head.j < 39)
 				result.push_back(nright);
+			delete nup;
 			break;
 		case 2: //left
 			if (sup.head.i > 0)
@@ -73,6 +85,7 @@ std::vector<node *> successor(node *current)
 				result.push_back(ndown);
 			if (sleft.head.j > 0)
 				result.push_back(nleft);
+			delete nright;
 			break;
 		case 3: //right
 			if (sup.head.i > 0)
@@ -81,6 +94,7 @@ std::vector<node *> successor(node *current)
 				result.push_back(ndown);
 			if (sright.head.j < 39)
 				result.push_back(nright);
+			delete nleft;
 			break;
 	}
 	return result;
@@ -108,10 +122,14 @@ std::vector<std::string> bfs(snake s)
 			if (explored[temp->nodeSnake.hash()] == false && inFrontier[temp->nodeSnake.hash()] == false)
 			{
 				if (isGoal(temp->nodeSnake))
+				{
+					deleteFrontier(frontier);
 					return solution(temp);
+				}
 				frontier.push(temp);
 				inFrontier[temp->nodeSnake.hash()] = true;
 			}
+			else delete temp;
 		}
 	}
 }

@@ -6,5 +6,6 @@ void gotoij(int i, int j);
 void hideCursor();
 void displayMap();
 bool gameover(const snake &s);
+void interpretmove(std::string input, snake &s);
 
 #endif

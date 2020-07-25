@@ -12,34 +12,30 @@ int main()
 	displayMap();
 	snake s;
 	s.print();
-	/*while (true)
+	vector<string> v;
+	v = bfs(s);
+	while (true)
 	{
 		if (GetKeyState('F'))
 			break;
 	}
 	while (true)
 	{
+		if (v.empty())
+		{
+			s.increaseSize();
+			v = bfs(s);
+		}
+		else
+		{
+			string temp = v.back();
+			v.pop_back();
+			interpretmove(temp, s);
+		}
 		s.move();
 		s.print();
-		if (GetAsyncKeyState('W'))
-			s.turn(direction::up);
-		if (GetAsyncKeyState('S'))
-			s.turn(direction::down);
-		if (GetAsyncKeyState('A'))
-			s.turn(direction::left);
-		if (GetAsyncKeyState('D'))
-			s.turn(direction::right);
 		if (gameover(s))
 			break;
 		Sleep(100);
-	}*/
-	gotoij(25, 0);
-	vector<string> v = bfs(s);
-	while (!v.empty())
-	{
-		string s = v.back();
-		v.pop_back();
-		cout << s << endl;
 	}
-	cin.get();
 }

@@ -21,6 +21,7 @@ public:
 	void move();
 	void turn(direction dir);
 	void generateFruit();
+	void increaseSize();
 	std::string hash();
 };
 

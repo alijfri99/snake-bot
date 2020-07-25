@@ -48,3 +48,16 @@ bool gameover(const snake &s)
 	}
 	return false;
 }
+
+void interpretmove(std::string input, snake &s)
+{
+	if (input == "up")
+		s.turn(direction::up);
+	else if (input == "down")
+		s.turn(direction::down);
+	else if (input == "left")
+		s.turn(direction::left);
+	else
+		s.turn(direction::right);
+
+}
