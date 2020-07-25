@@ -70,6 +70,7 @@ std::vector<node *> successor(node *current)
 			result.push_back(nright);
 			break;
 	}
+	return result;
 }
 
 std::vector<std::string> bfs(snake s)
