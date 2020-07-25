@@ -115,12 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="node.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="snake.h" />
     <ClInclude Include="tools.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="node.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="snake.cpp" />
     <ClCompile Include="tools.cpp" />
