@@ -9,10 +9,10 @@ using namespace std;
 
 int main()
 {
-	hideCursor();
+	/*hideCursor();
 	displayMap();
 	snake s;
-	s.print();
+	//s.print();
 	vector<string> v;
 	v = bfs(s);
 	while (true)
@@ -44,6 +44,11 @@ int main()
 		string s = v.back();
 		v.pop_back();
 		cout << s << endl;
-	}
+	}*/
+	cout << sizeof(node) << endl;
+	cin.get();
+	/*vector<int> a(5);
+	a[0] = 55;
+	cout << a[0] << endl;
 	cin.get();*/
 }

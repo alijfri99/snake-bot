@@ -7,8 +7,8 @@
 
 std::vector<std::string> bfs(snake s);
 bool isGoal(const snake &s);
-std::vector<std::string> solution(node nodes[], node n);
-std::vector<node> successor(node nodes[], int currentIndex);
+std::vector<std::string> solution(const std::vector<node> &nodes, node n);
+std::vector<node> successor(const std::vector<node> &nodes, int currentIndex);
 void deleteNodes(std::queue<node *> &q);
 
 #endif // !BFS_H

@@ -10,7 +10,7 @@ bool isGoal(const snake &s)
 	return(s.head.i == s.fruit.i&&s.head.j == s.fruit.j);
 }
 
-std::vector<std::string> solution(node nodes[], node n)
+std::vector<std::string> solution(const std::vector<node> &nodes, node n)
 {
 	std::vector<std::string> result;
 	while (n.parentIndex != NULL)
@@ -32,7 +32,7 @@ void deleteNodes(std::queue<node *> &q)
 	}
 }
 
-std::vector<node> successor(node nodes[], int currentIndex)
+std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 {
 	std::vector<node> result;
 	node current = nodes[currentIndex];
@@ -100,7 +100,7 @@ std::vector<node> successor(node nodes[], int currentIndex)
 
 std::vector<std::string> bfs(snake s)
 {
-	node *nodes = new node[200000];
+	std::vector<node> nodes(300000);
 	int index = 0;
 	node init(s, "", 0, NULL);
 	nodes[index] = init;
@@ -126,7 +126,7 @@ std::vector<std::string> bfs(snake s)
 				if (isGoal(temp.nodeSnake))
 				{
 					std::vector<std::string> sol = solution(nodes, temp);
-					delete[] nodes;
+					//delete[] nodes;
 					return sol;
 				}
 				index++;
