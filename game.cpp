@@ -8,11 +8,11 @@ using namespace std;
 
 int main()
 {
-	/*hideCursor();
+	hideCursor();
 	displayMap();
 	snake s;
 	s.print();
-	while (true)
+	/*while (true)
 	{
 		if (GetKeyState('F'))
 			break;
@@ -33,8 +33,7 @@ int main()
 			break;
 		Sleep(100);
 	}*/
-	snake s;
-	cout << s.head.i << ", " << s.head.j << ", " << s.fruit.i << ", " << s.fruit.j << endl;
+	gotoij(25, 0);
 	vector<string> v = bfs(s);
 	while (!v.empty())
 	{

@@ -88,7 +88,6 @@ std::vector<node *> successor(node *current)
 
 std::vector<std::string> bfs(snake s)
 {
-	std::cout << "In BFS!" << std::endl;
 	node *init = new node(s, "GHOLI", 0, NULL);
 	std::queue<node *> frontier;
 	std::unordered_map<std::string, bool> inFrontier;
@@ -97,7 +96,7 @@ std::vector<std::string> bfs(snake s)
 	inFrontier[init->nodeSnake.hash()] = true;
 	while (!frontier.empty())
 	{
-		node *current = frontier.back();
+		node *current = frontier.front();
 		frontier.pop();
 		inFrontier[current->nodeSnake.hash()] = false;
 		explored[current->nodeSnake.hash()] = true;
