@@ -2,12 +2,13 @@
 #include<Windows.h>
 #include "tools.h"
 #include "snake.h"
+#include "bfs.h"
 
 using namespace std;
 
 int main()
 {
-	hideCursor();
+	/*hideCursor();
 	displayMap();
 	snake s;
 	s.print();
@@ -31,5 +32,14 @@ int main()
 		if (gameover(s))
 			break;
 		Sleep(100);
+	}*/
+	snake s;
+	vector<string> v = bfs(s);
+	while (!v.empty())
+	{
+		string s = v.back();
+		v.pop_back();
+		cout << s << endl;
 	}
+	cin.get();
 }
