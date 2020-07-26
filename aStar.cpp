@@ -1,6 +1,8 @@
 #include "aStar.h"
 #include "snake.h"
 #include "node.h"
+#include "compareNode.h"
+#include "tools.h"
 #include<queue>
 #include<unordered_map>
 #include<iostream>
@@ -53,35 +55,35 @@ std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 	switch (s.currentDirection) //add successor nodes to the result based on the current direction, and only if the snake stays within the map
 	{
 		case 0: //up
-			if(sup.head.i>0)
+			if(!gameover(sup))
 				result.push_back(nup);
-			if(sleft.head.j>0)
+			if(!gameover(sleft))
 				result.push_back(nleft);
-			if(sright.head.j<39)
+			if(!gameover(sright))
 				result.push_back(nright);
 			break;
 		case 1: //down
-			if(sdown.head.i<19)
+			if(!gameover(sdown))
 				result.push_back(ndown);
-			if (sleft.head.j > 0)
+			if (!gameover(sleft))
 				result.push_back(nleft);
-			if (sright.head.j < 39)
+			if (!gameover(sright))
 				result.push_back(nright);
 			break;
 		case 2: //left
-			if (sup.head.i > 0)
+			if (!gameover(sup))
 				result.push_back(nup);
-			if (sdown.head.i < 19)
+			if (!gameover(sdown))
 				result.push_back(ndown);
-			if (sleft.head.j > 0)
+			if (!gameover(sleft))
 				result.push_back(nleft);
 			break;
 		case 3: //right
-			if (sup.head.i > 0)
+			if (!gameover(sup))
 				result.push_back(nup);
-			if (sdown.head.i < 19)
+			if (!gameover(sdown))
 				result.push_back(ndown);
-			if (sright.head.j < 39)
+			if (!gameover(sright))
 				result.push_back(nright);
 			break;
 	}
@@ -90,11 +92,12 @@ std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 
 std::vector<std::string> aStar(snake s)
 {
-	std::vector<node> nodes(200000);
+	std::vector<node> nodes(100000);
 	int index = 0;
-	node init(s, "", 0, NULL);
+	node init(s, "right", 0, NULL);
 	nodes[index] = init;
-	std::priority_queue<int> frontier;
+	std::priority_queue<int, std::vector<int>, compareNode> frontier(nodes);
+	//std::queue<int> frontier;
 	std::unordered_map<std::string, bool> inFrontier;
 	std::unordered_map<std::string, bool> inExplored;
 	frontier.push(index);
@@ -116,7 +119,7 @@ std::vector<std::string> aStar(snake s)
 				if (isGoal(temp.nodeSnake))
 				{
 					std::vector<std::string> sol = solution(nodes, temp);
-					//delete[] nodes;
+					
 					return sol;
 				}
 				index++;

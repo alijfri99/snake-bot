@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="aStar.h" />
+    <ClInclude Include="compareNode.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="snake.h" />
@@ -123,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aStar.cpp" />
+    <ClCompile Include="compareNode.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="point.cpp" />

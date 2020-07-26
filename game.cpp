@@ -12,7 +12,7 @@ int main()
 	hideCursor();
 	displayMap();
 	snake s;
-	//s.print();
+	s.print();
 	vector<string> v;
 	v = aStar(s);
 	while (true)
@@ -25,6 +25,8 @@ int main()
 		if (v.empty())
 		{
 			s.increaseSize();
+			//s.move();
+			s.print();
 			v = aStar(s);
 		}
 		else
@@ -32,11 +34,11 @@ int main()
 			string temp = v.back();
 			v.pop_back();
 			interpretmove(temp, s);
+			s.move();
+			s.print();
 		}
-		s.move();
-		s.print();
-		if (gameover(s))
-			break;
+		//if (gameover(s))
+			//break;
 		Sleep(100);
 	}
 	/*while (!v.empty())
