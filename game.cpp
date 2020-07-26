@@ -1,5 +1,6 @@
 #include<iostream>
 #include<Windows.h>
+#include<thread>
 #include "tools.h"
 #include "snake.h"
 #include "aStar.h"
@@ -14,7 +15,7 @@ int main()
 	snake s;
 	s.print();
 	vector<string> v;
-	v = aStar(s);
+	aStar(s, v);
 	while (true)
 	{
 		if (GetKeyState('F'))
@@ -22,12 +23,14 @@ int main()
 	}
 	while (true)
 	{
+		if (s.head.i == s.fruit.i&&s.head.j == s.fruit.j)
+			s.increaseSize();
 		if (v.empty())
 		{
-			s.increaseSize();
-			//s.move();
 			s.print();
-			v = aStar(s);
+			//thread t(aStar, s,v);
+			//t.join();
+			aStar(s, v);
 		}
 		else
 		{

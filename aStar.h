@@ -4,9 +4,9 @@
 #include "snake.h"
 #include "node.h"
 
-std::vector<std::string> aStar(snake s);
+void aStar(snake s, std::vector<std::string> &returnVector);
 bool isGoal(const snake &s);
-std::vector<std::string> solution(const std::vector<node> &nodes, node n);
+void solution(const std::vector<node> &nodes, node n, std::vector<std::string> &returnVector);
 std::vector<node> successor(const std::vector<node> &nodes, int currentIndex);
 
 #endif // !ASTAR

@@ -12,16 +12,14 @@ bool isGoal(const snake &s)
 	return(s.head.i == s.fruit.i&&s.head.j == s.fruit.j);
 }
 
-std::vector<std::string> solution(const std::vector<node> &nodes, node n)
+void solution(const std::vector<node> &nodes, node n, std::vector<std::string> &returnVector)
 {
-	std::vector<std::string> result;
 	while (n.parentIndex != NULL)
 	{
-		result.push_back(n.direction);
+		returnVector.push_back(n.direction);
 		n = nodes[n.parentIndex];
 	}
-	result.push_back(n.direction);
-	return result;
+	returnVector.push_back(n.direction);
 }
 
 std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
@@ -90,8 +88,9 @@ std::vector<node> successor(const std::vector<node> &nodes, int currentIndex)
 	return result;
 }
 
-std::vector<std::string> aStar(snake s)
+void aStar(snake s, std::vector<std::string> &returnVector)
 {
+	int time = 0;
 	std::vector<node> nodes(100000);
 	int index = 0;
 	node init(s, "right", 0, NULL);
@@ -107,6 +106,12 @@ std::vector<std::string> aStar(snake s)
 		int currentIndex = frontier.top();
 		node current = nodes[currentIndex];
 		frontier.pop();
+		/*time++;
+		if (time == 50)
+		{
+			std::vector<std::string> empty;
+			return empty;
+		}*/
 		inFrontier[current.nodeSnake.hash()] = false;
 		inExplored[current.nodeSnake.hash()] = true;
 		std::vector<node> children = successor(nodes,currentIndex);
@@ -118,9 +123,8 @@ std::vector<std::string> aStar(snake s)
 			{
 				if (isGoal(temp.nodeSnake))
 				{
-					std::vector<std::string> sol = solution(nodes, temp);
-					
-					return sol;
+					solution(nodes, temp, returnVector);
+					return;
 				}
 				index++;
 				nodes[index] = temp;
@@ -129,4 +133,5 @@ std::vector<std::string> aStar(snake s)
 			}
 		}
 	}
+	return;
 }
