@@ -18,11 +18,6 @@ int main()
 	aStar(s, v);
 	while (true)
 	{
-		if (GetKeyState('F'))
-			break;
-	}
-	while (true)
-	{
 		if (s.head.i == s.fruit.i&&s.head.j == s.fruit.j)
 			s.increaseSize();
 		if (v.empty())
