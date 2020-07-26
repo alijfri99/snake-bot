@@ -1,6 +1,6 @@
+#include<string>
 #include "node.h"
 #include "snake.h"
-#include<string>
 
 node::node()
 {

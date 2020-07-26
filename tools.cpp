@@ -59,5 +59,4 @@ void interpretmove(std::string input, snake &s)
 		s.turn(direction::left);
 	else
 		s.turn(direction::right);
-
 }

@@ -1,8 +1,8 @@
+#include<iostream>
+#include<string>
 #include "snake.h"
 #include "point.h"
 #include "tools.h"
-#include<iostream>
-#include<string>
 
 using namespace std;
 

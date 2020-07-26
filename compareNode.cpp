@@ -1,6 +1,7 @@
+#include<vector>
 #include "compareNode.h"
 #include "node.h"
-#include<vector>
+
 
 compareNode::compareNode(std::vector<node> &nodes)
 {

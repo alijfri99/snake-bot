@@ -1,11 +1,10 @@
+#include<queue>
+#include<unordered_map>
 #include "aStar.h"
 #include "snake.h"
 #include "node.h"
 #include "compareNode.h"
 #include "tools.h"
-#include<queue>
-#include<unordered_map>
-#include<iostream>
 
 bool isGoal(const snake &s)
 {
@@ -96,7 +95,6 @@ void aStar(snake s, std::vector<std::string> &returnVector)
 	node init(s, "right", 0, NULL);
 	nodes[index] = init;
 	std::priority_queue<int, std::vector<int>, compareNode> frontier(nodes);
-	//std::queue<int> frontier;
 	std::unordered_map<std::string, bool> inFrontier;
 	std::unordered_map<std::string, bool> inExplored;
 	frontier.push(index);
@@ -106,8 +104,6 @@ void aStar(snake s, std::vector<std::string> &returnVector)
 		int currentIndex = frontier.top();
 		node current = nodes[currentIndex];
 		frontier.pop();
-		//system("cls");
-		//current.nodeSnake.print();
 		inFrontier[current.nodeSnake.hash()] = false;
 		inExplored[current.nodeSnake.hash()] = true;
 		std::vector<node> children = successor(nodes,currentIndex);

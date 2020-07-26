@@ -1,7 +1,7 @@
 #ifndef SNAKE_H
 #define SNAKE_H
-#include "point.h"
 #include<string>
+#include "point.h"
 
 enum direction{up,down,left,right};
 

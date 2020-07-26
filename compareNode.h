@@ -1,7 +1,7 @@
 #ifndef COMPARENODE_H
 #define COMPARENODE_H
-#include "node.h"
 #include<vector>
+#include "node.h"
 
 class compareNode
 {
