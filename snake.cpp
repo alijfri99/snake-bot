@@ -20,8 +20,6 @@ snake::snake()
 
 void snake::print()
 {
-	gotoij(blank.i, blank.j);
-	cout << " ";
 	gotoij(head.i, head.j);
 	cout << "O";
 	for (int i = 0; i < bodysize; i++)
@@ -29,6 +27,8 @@ void snake::print()
 		gotoij(body[i].i, body[i].j);
 		cout << "o";
 	}
+	gotoij(blank.i, blank.j);
+	cout << " ";
 	gotoij(fruit.i, fruit.j);
 	cout << "$";
 	gotoij(21, 1);
