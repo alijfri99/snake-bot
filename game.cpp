@@ -29,7 +29,6 @@ int main()
 		{
 			s.print();
 			//thread t(aStar, s,v);
-			//t.join();
 			aStar(s, v);
 		}
 		else

@@ -9,5 +9,13 @@ compareNode::compareNode(std::vector<node> &nodes)
 
 bool compareNode::operator()(int const &index1, int const &index2)
 {
-	return  nodes->at(index1).f > nodes->at(index2).f;
+	node node1 = nodes->at(index1);
+	node node2 = nodes->at(index2);
+
+	if (node1.f > node2.f)
+		return true;
+	else if (node1.f < node2.f)
+		return false;
+	else
+		return node1.h > node2.h;
 }

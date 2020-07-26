@@ -126,10 +126,10 @@ string snake::hash()
 	string result = "";
 	result += to_string(head.i);
 	result += to_string(head.j);
-	for (int i = 0; i < bodysize; i++)
+	/*for (int i = 0; i < bodysize; i++)
 	{
 		result += to_string(body[i].i);
 		result += to_string(body[i].j);
-	}
+	}*/
 	return result;
 }

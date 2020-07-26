@@ -106,12 +106,8 @@ void aStar(snake s, std::vector<std::string> &returnVector)
 		int currentIndex = frontier.top();
 		node current = nodes[currentIndex];
 		frontier.pop();
-		/*time++;
-		if (time == 50)
-		{
-			std::vector<std::string> empty;
-			return empty;
-		}*/
+		//system("cls");
+		//current.nodeSnake.print();
 		inFrontier[current.nodeSnake.hash()] = false;
 		inExplored[current.nodeSnake.hash()] = true;
 		std::vector<node> children = successor(nodes,currentIndex);
